@@ -117,9 +117,9 @@ if __name__ == '__main__':
     # If you find this code is useful, please cite our paper and star the project. (We do need it! HaHaHaHa.)
     # Thanks for the interest in this project.
 
-    sims_baseline = np.load(r'D:\daima\python\TVRN\bert_methods\baseline\results_f30k-base.npy', allow_pickle=True).tolist()['sims']
-    sims_proposed_method1 = np.load(r'D:\daima\python\TVRN\bert_methods\baseline\results_f30k-GAT.npy', allow_pickle=True).tolist()['sims']
-    sims_proposed_method2 = np.load(r'D:\daima\python\TVRN\bert_methods\baseline\results_f30k-zong.npy', allow_pickle=True).tolist()['sims']
+    sims_baseline = np.load(r'.\results_f30k-base.npy', allow_pickle=True).tolist()['sims']
+    sims_proposed_method1 = np.load(r'.\results_f30k-GAFM.npy', allow_pickle=True).tolist()['sims']
+    sims_proposed_method2 = np.load(r'.\results_f30k-CSAN.npy', allow_pickle=True).tolist()['sims']
 
     # -------------- search the samples that are better than baseline -------------------- #
     sims_target = [sims_proposed_method1, sims_proposed_method2]
@@ -143,7 +143,7 @@ if __name__ == '__main__':
     ids = [4442, 353, 2384, 350, 347]
 
     captions = []
-    for line in open(r'D:\daima\python\TVRN\data\f30k_precomp\test_caps.txt', 'r'):
+    for line in open(r'.\f30k_precomp\test_caps.txt', 'r'):
         captions.append(line.strip())
 
     for i, id in enumerate(ids):
