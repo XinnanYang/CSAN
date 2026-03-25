@@ -12,7 +12,7 @@ from pathlib import Path
 import data
 import opts
 
-from model_1 import SGRAF
+from model import SGRAF
 from evaluation import i2t, t2i, AverageMeter, LogCollector, encode_data, shard_attn_scores
 
 import logging
@@ -222,17 +222,6 @@ def save_checkpoint(state, is_best, filename='checkpoint.pth.tar', prefix=''):
             raise error
 
 
-# def adjust_learning_rate(opt, optimizer, epoch):
-#     """
-#     Sets the learning rate to the initial LR
-#     decayed by 10 after opt.lr_update epoch
-#     """
-#     if epoch < 20:
-#         lr = opt.learning_rate * (0.1 ** (epoch // opt.lr_update))  # f30k
-#     else:
-#         lr = 0.00001
-#     for param_group in optimizer.param_groups:
-#         param_group['lr'] = lr
 def adjust_learning_rate(opt, optimizers, epoch):
     """
     Sets the learning rate to the initial LR decayed by 10 after opt.lr_update epoch
