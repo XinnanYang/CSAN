@@ -10,7 +10,7 @@ import numpy as np
 
 from data import get_test_loader
 from vocab import Vocabulary, deserialize_vocab
-from model_1 import SGRAF
+from model_1 import CSAN
 from collections import OrderedDict
 
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
@@ -175,7 +175,7 @@ def evalrank(model_path, data_path=None, split='dev', fold5=False):
     # opt.vocab_size = len(vocab)
 
     # construct model
-    model = SGRAF(opt)
+    model = CSAN(opt)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = model.to(device)
 
@@ -274,8 +274,8 @@ def evalrank_ensemble(model_path1, model_path2, data_path=None, split='dev', fol
     opt.vocab_size = len(vocab)
 
     # construct model
-    model = SGRAF(opt)
-    model2 = SGRAF(opt2)
+    model = CSAN(opt)
+    model2 = CSAN(opt2)
 
     # load model state
     model.load_state_dict(checkpoint['model'])
